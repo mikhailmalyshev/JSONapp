@@ -11,59 +11,14 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var factCatLabel: UILabel!
-    
     @IBOutlet weak var imageCatView: UIImageView!
-    let json1 = "https://catfact.ninja/fact"
-    let json2 = "https://aws.random.cat/meow"
     
-    var fact: FactAboutCat?
-    var catImage: CatImage?
+    private var fact: FactAboutCat?
+    private var catImage: CatImage?
     
     @IBAction func getCatFact() {
-        getRandomCatFact()
-        getRandomPic()
-    }
-}
-    
-
-extension ViewController {
-    private func getRandomCatFact() {
-        guard let url = URL(string: json1) else { return }
-
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data else { return }
-            let decoder = JSONDecoder()
-            DispatchQueue.main.async {
-                do {
-                    self.fact = try decoder.decode(FactAboutCat.self, from: data)
-                    self.factCatLabel.text = self.fact?.fact
-                } catch let error {
-                    print(error)
-                }
-            }
-        }.resume()
-    }
-    
-    private func getRandomPic() {
-        guard let url = URL(string: json2) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, _, _) in
-            guard let data = data else { return }
-            let decoder = JSONDecoder()
-            DispatchQueue.global().async {
-                do {
-                    self.catImage = try decoder.decode(CatImage.self, from: data)
-                    guard let stringURL = self.catImage?.file else { return }
-                    guard let imageURL = URL(string: stringURL) else { return }
-                    guard let imageData = try? Data(contentsOf: imageURL) else { return }
-                    DispatchQueue.main.async {
-                        self.imageCatView.image = UIImage(data: imageData)
-                    }
-                } catch let error {
-                    print(error)
-                }
-            }
-        }.resume()
+        NetworkDataManager.getRandomCatFact(fact: fact ?? FactAboutCat(fact: "NONE"), label: factCatLabel)
+        NetworkDataManager.getRandomPic(catImage: catImage ?? CatImage(file: "https://shop.rusevrosteel.ru/files/products/nophoto_8.800x600.png?957f69c1f2db8aabf806dc1e935a84de"), imageView: imageCatView)
     }
 }
 

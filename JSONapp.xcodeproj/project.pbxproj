@@ -13,7 +13,7 @@
 		971D13E4242DE2B800C676F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 971D13E2242DE2B800C676F3 /* Main.storyboard */; };
 		971D13E6242DE2BA00C676F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 971D13E5242DE2BA00C676F3 /* Assets.xcassets */; };
 		971D13E9242DE2BA00C676F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 971D13E7242DE2BA00C676F3 /* LaunchScreen.storyboard */; };
-		971D13F1242DEC5700C676F3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971D13F0242DEC5700C676F3 /* Model.swift */; };
+		971D13F1242DEC5700C676F3 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971D13F0242DEC5700C676F3 /* Models.swift */; };
 		971D13F3242E237400C676F3 /* NetworkDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971D13F2242E237400C676F3 /* NetworkDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		971D13E5242DE2BA00C676F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		971D13E8242DE2BA00C676F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		971D13EA242DE2BA00C676F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		971D13F0242DEC5700C676F3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		971D13F0242DEC5700C676F3 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		971D13F2242E237400C676F3 /* NetworkDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				971D13DC242DE2B800C676F3 /* AppDelegate.swift */,
-				971D13F0242DEC5700C676F3 /* Model.swift */,
+				971D13F0242DEC5700C676F3 /* Models.swift */,
 				971D13DE242DE2B800C676F3 /* SceneDelegate.swift */,
 				971D13E0242DE2B800C676F3 /* ViewController.swift */,
 				971D13E2242DE2B800C676F3 /* Main.storyboard */,
@@ -148,7 +148,7 @@
 				971D13E1242DE2B800C676F3 /* ViewController.swift in Sources */,
 				971D13DD242DE2B800C676F3 /* AppDelegate.swift in Sources */,
 				971D13DF242DE2B800C676F3 /* SceneDelegate.swift in Sources */,
-				971D13F1242DEC5700C676F3 /* Model.swift in Sources */,
+				971D13F1242DEC5700C676F3 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
