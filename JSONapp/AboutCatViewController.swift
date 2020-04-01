@@ -36,7 +36,7 @@ class AboutCatViewController: UIViewController {
         NetworkManager.shared.getRandomPic(from: randomPicUrl) { randomPic in
             DispatchQueue.global().async {
                 self.catImage = randomPic
-                guard let stringUrl = self.catImage?.file else { return }
+                guard let stringUrl = self.catImage?.imageUrl else { return }
                 guard let imageUrl = URL(string: stringUrl) else { return }
                 do {
                     let imageData = try Data(contentsOf: imageUrl)

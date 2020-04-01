@@ -11,5 +11,5 @@ struct FactAboutCat: Decodable {
 }
 
 struct CatImage: Decodable {
-    let file: String?
+    let imageUrl: String?
 }

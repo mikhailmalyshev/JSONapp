@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 struct NetworkManager {
     
@@ -15,34 +16,33 @@ struct NetworkManager {
     private init() {}
     
     func getRandomCatFact(from url: String, with complition: @escaping (FactAboutCat) -> ()) {
-        guard let url = URL(string: url) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            if let error = error { print(error); return }
-            guard let data = data else { return }
-            let decoder = JSONDecoder()
-            do {
-                let fact = try decoder.decode(FactAboutCat.self, from: data)
-                complition(fact)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }.resume()
+        AF.request(url)
+            .validate()
+            .responseJSON { responseData in
+                switch responseData.result {
+                case .success(let value):
+                    guard let jsonData = value as? [String: Any] else { return }
+                    let fact = FactAboutCat(fact: jsonData["fact"] as? String)
+                    complition(fact)
+                case .failure(let error):
+                    print(error)
+                }
+        }
     }
     
     func getRandomPic(from url: String, with complition: @escaping (CatImage) -> ()) {
-        guard let url = URL(string: url) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            if let error = error { print(error); return }
-            guard let data = data else { return }
-            let decoder = JSONDecoder()
-            do {
-                let randomPic = try decoder.decode(CatImage.self, from: data)
-                complition(randomPic)
-            } catch let jsonError {
-                print(jsonError.localizedDescription)
-            }
-        }.resume()
+        AF.request(url)
+            .validate()
+            .responseJSON { responseData in
+                switch responseData.result {
+                case .success(let value):
+                    guard let jsonData = value as? [String: Any] else { return }
+                    let catImage = CatImage(imageUrl: jsonData["file"] as? String)
+                    complition(catImage)
+                case .failure(let error):
+                    print(error)
+                }
+        }
     }
 }
+
